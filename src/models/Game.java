@@ -40,13 +40,13 @@ public class Game {
         return this.board;
     }
 
-
     public boolean makeMove()
+    //this returns false when move entity is null
     {
         lastMovedPlayerIndex += 1;
         this.lastMovedPlayerIndex %= this.players.size();
        //Symbol symbol = this.players.get(this.lastMovedPlayerIndex).getSymbol();
-
+        //choosing the next player and making move on it
        Move move = this.players.get(this.lastMovedPlayerIndex).makeMove(this.board);
        if(move == null)
        {
@@ -56,17 +56,14 @@ public class Game {
        }
        this.moves.add(move);
 
-       //set the symbol of the player in the corresponding cell in which move is done
-        move.getCell().setSymbol(move.getSymbol());
-
-
+//       //set the symbol of the player in the corresponding cell in which move is done
+//        move.getCell().setSymbol(move.getSymbol());
 
        //check if this movement led to last player to win
         for(GameWinningStrategy strategy : gameWinningStrategies)
         {
-            if(strategy.checkIfWon(move))
-            {
-                this.gameStatus = GameStatus.ENDED;
+            if (strategy.checkIfWon(this.board, this.players.get(lastMovedPlayerIndex), move.getCell())) {
+                gameStatus = GameStatus.ENDED;
                 winner = this.players.get(lastMovedPlayerIndex);
                 return true;
             }
@@ -75,7 +72,7 @@ public class Game {
             //also check for draw
         if (moves.size() == this.board.getDimension() * this.board.getDimension()) {
             gameStatus = GameStatus.DRAW;
-            return true;
+
         }
         return  true;
     }

@@ -3,13 +3,13 @@ package models;
 public class Move {
     private Cell cell;
     private Player player;
-    private Symbol symbol;
+    //private Symbol symbol;
 
-    public void makeMove(Cell cell, Player player, Symbol symbol)
+    public void makeMove(Cell cell, Player player)
     {
         this.cell = cell;
         this.player = player;
-        this.symbol = symbol;
+        //this.symbol = symbol;
     }
     public void setCell(Cell cell)
     {
@@ -22,7 +22,6 @@ public class Move {
 
     public Symbol getSymbol()
     {
-        return this.symbol;
+        return this.player.getSymbol();
     }
-
 }

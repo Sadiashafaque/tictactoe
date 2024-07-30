@@ -26,8 +26,6 @@ public class Board {
         return this.board;
     }
 
-
-
     public int getDimension()
     {
         return this.dimension;
@@ -49,7 +47,7 @@ public class Board {
                 }
                 else
                 {
-                    System.out.print("| " + cell.getSymbol().getSymbol() + " |");
+                    System.out.print("| " + cell.getSymbol().getCharacter() + " |");
                 }
             }
             System.out.print("\n");

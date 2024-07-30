@@ -9,7 +9,7 @@ public class GameSimulator {
 
     public static void main(String[] args) {
         int dimension = 3;
-        Player p1 = new HumanPlayer(new Symbol('X'));
+        Player p1 = new HumanPlayer(new Symbol('S'));
         Player p2 = new Bot(new Symbol('O'), BotDifficultyLevel.EASY);
         GameWinningStrategy strategy = new OrderOneGameWinningStrategy();
         ////GameWinningStrategy strategy2 = new OrderNGameWinningStrategy();
@@ -25,11 +25,10 @@ public class GameSimulator {
                 System.out.println("Wrong row or col given try again");
                 gameController.display(game);
             }
-
         }
 //
         if (gameController.getGameStatus(game).equals(GameStatus.ENDED)) {
-            System.out.println("WINNER WINNER CHICKEN DINNER");
+            System.out.println("WINNER WINNER CHICKEN DINNER " + game.getWinner().getSymbol().getCharacter() + " Has won the game");
             gameController.display(game);
         }
 //

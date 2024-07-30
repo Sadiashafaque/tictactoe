@@ -29,12 +29,15 @@ public class HumanPlayer extends Player{
 //        board.getCell(row-1,col-1).setSymbol(symbol);
 
         Cell cell = board.getCell(row-1,col-1); // get the cell of the given indices
+        cell.setRow(row-1);
+        cell.setColumn(col-1);
         if(cell.getSymbol() != null)
         {
             return null;
         }
+        cell.setSymbol(this.getSymbol());
         Move move = new Move();
-        move.makeMove(cell, this, this.getSymbol());
+        move.makeMove(cell, this);
 
         return move;
 
